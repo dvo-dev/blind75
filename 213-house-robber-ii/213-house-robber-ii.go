@@ -18,17 +18,12 @@ func rob(nums []int) int {
         return sum1
     }
     
-    // Edge case
-    if len(nums) == 1 {
-        return nums[0]
-    }
-    
     // There are two house robber 1 subproblems
     // If you choose to rob the first house you cannot rob the last house
     // and vice-versa
-    return max(
+    return max(nums[0], max(    // Edge case of one house
         _rob(nums[:len(nums)-1]),
         _rob(nums[1:]),
-    )
+    ))
 }
 
