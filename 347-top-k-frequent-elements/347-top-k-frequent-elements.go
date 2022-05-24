@@ -25,15 +25,13 @@ func topKFrequent(nums []int, k int) []int {
             break
         }
         
-        if len(count[i]) > 0 {
-            for _, n := range count[i] {
-                if k-1 < 0 {
-                    return res
-                }
-                
-                res[k-1] = n
-                k -= 1
+        for _, n := range count[i] {
+            if k-1 < 0 {
+                return res
             }
+
+            res[k-1] = n
+            k -= 1
         }
     }
     
