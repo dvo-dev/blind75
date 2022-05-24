@@ -21,10 +21,6 @@ func topKFrequent(nums []int, k int) []int {
     // until k values are found.
     res := make([]int, k)
     for i := len(count) - 1; i >= 0; i-- {
-        if k-1 < 0 {
-            break
-        }
-        
         for _, n := range count[i] {
             if k-1 < 0 {
                 return res
