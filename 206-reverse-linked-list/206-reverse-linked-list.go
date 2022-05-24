@@ -8,6 +8,9 @@
 func reverseList(head *ListNode) *ListNode {
     var prev *ListNode
     
+    // head = current node
+    // prev = used to remember the preceeding node to "reverse" the next pointer
+    // next = used to keep track of dangling next, so we can advance the loop
     for head != nil {
         next := head.Next
         head.Next = prev
