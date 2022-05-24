@@ -1,29 +1,32 @@
 func isAnagram(s string, t string) bool {
-    var sTotal int
-    sMap := make(map[rune]int)
-    for _, r := range s {
-        val, ok := sMap[r]
+    if len(s) != len(t) {
+        return false
+    }
+    
+    sMap, tMap := make(map[rune]int), make(map[rune]int)
+    sRunes, tRunes := []rune(s), []rune(t)
+    
+    for i := range sRunes {
+        val, ok := sMap[sRunes[i]]
         if ok {
-            sMap[r] = val + 1
+            sMap[sRunes[i]] = val + 1
         } else {
-            sMap[r] = 1
-        }
-        sTotal += 1
-    }
-    
-    for _, r := range t {
-        if sTotal == 0 {
-            return false
+            sMap[sRunes[i]] = 1
         }
         
-        val, ok := sMap[r]
-        if !ok || val == 0 {
-            return false
+        val, ok = tMap[tRunes[i]]
+        if ok {
+            tMap[tRunes[i]] = val + 1
+        } else {
+            tMap[tRunes[i]] = 1
         }
-        
-        sMap[r] = val-1
-        sTotal -= 1
     }
     
-    return sTotal == 0
+    for k, v := range sMap {
+        if val, ok := tMap[k]; !ok || v != val {
+            return false
+        }
+    }
+    
+    return len(sMap) == len(tMap)
 }
