@@ -17,6 +17,8 @@ func topKFrequent(nums []int, k int) []int {
         count[freq] = append(count[freq], val)
     }
     
+    // Calculate the result, by traversing backwards from the count slice,
+    // until k values are found.
     res := make([]int, k)
     for i := len(count) - 1; i >= 0; i-- {
         if k-1 < 0 {
