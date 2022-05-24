@@ -11,7 +11,6 @@ func isValid(s string) bool {
         if ok {
             st.Push(b)
         } else if st.IsEmpty() || st.Pop() != r {
-            fmt.Printf("%v %v", st, r)
             return false
         }
     }
