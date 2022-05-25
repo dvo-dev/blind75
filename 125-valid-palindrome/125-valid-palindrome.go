@@ -1,8 +1,10 @@
 func isPalindrome(s string) bool {
+    // Base case
     if len(s) == 0 {
         return true
     }
     
+    // Remove spaces, non-alphanumerics, lowercase entire string
     s = (strings.ToLower(
         strings.ReplaceAll(s, " ", ""),
     ))
@@ -12,6 +14,7 @@ func isPalindrome(s string) bool {
     }
     runes := []rune(reg.ReplaceAllString(s, ""))
     
+    // Iterate from either sides of the array, if no mismatches occur, is palindrome
     for left, right := 0, len(runes)-1;
     left < len(runes) && right >= 0;
     left, right = left+1, right-1 {
