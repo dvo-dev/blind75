@@ -14,7 +14,7 @@ func isPalindrome(s string) bool {
     }
     runes := []rune(reg.ReplaceAllString(s, ""))
     
-    // Iterate from either sides of the array, if no mismatches occur, is palindrome
+    // Iterate from both ends of the array, if no mismatches occur, is palindrome
     for left, right := 0, len(runes)-1;
     left < len(runes) && right >= 0;
     left, right = left+1, right-1 {
